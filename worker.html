@@ -1,0 +1,16 @@
+<script>
+    var w;
+    function startworker(){
+        w=new Worker("wworker.js");
+        w.onmessage=function(event){
+            document.getElementById("result").innerHTML=event.data;
+        }
+    }
+    function stopworker(){
+        w.terminate();
+        w=undefined;
+    }
+    </script>
+    <p> Time<output id="result"></output></p>
+    <button onclick="startworker()">Start Worker</button>
+    <button onclick="stopworker()">Stop Worker</button>
